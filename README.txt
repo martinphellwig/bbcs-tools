@@ -1,14 +1,14 @@
 .. image:: https://img.shields.io/codeship/7ce18320-21cb-0134-bdd9-5a97be3a7e25/default.svg
    :target: https://bitbucket.org/hellwig/BBCS-Tools
-.. image:: https://coveralls.io/repos/bitbucket/hellwig/BBCS-Tools/badge.svg?branch=default 
-   :target: https://coveralls.io/bitbucket/hellwig/BBCS-Tools?branch=default
+.. image:: https://coveralls.io/repos/bitbucket/hellwig/bbcs-tools/badge.svg?branch=default 
+   :target: https://coveralls.io/bitbucket/hellwig/bbcs-tools?branch=default
 .. image:: https://img.shields.io/pypi/v/BBCS-Tools.svg
    :target: https://pypi.python.org/pypi/BBCS-Tools/
 .. image:: https://img.shields.io/badge/Donate-PayPal-blue.svg
    :target: https://paypal.me/MartinHellwig
 .. image:: https://img.shields.io/badge/Donate-Patreon-orange.svg
    :target: https://www.patreon.com/hellwig
-   
+      
 ##########
 BBCS Tools
 ##########
