@@ -6,7 +6,7 @@ import os
 from setuptools import setup
 
 NAME = 'BBCS-Tools'
-DESCRIPTION = 'Bitbucket Codeship integration tools'
+DESCRIPTION = 'Bitbucket Codeship integration tools.'
 VERSION = '0.0.0.1'
 LICENSE = 'BSD'
 AUTHOR = 'Martin P. Hellwig'
@@ -18,13 +18,17 @@ URL_DOWNLOAD = URL_MAIN + 'get/' + DOWNLOAD_ID + '.zip'
 #
 PACKAGES = ['bbcs_tools']
 PACKAGE_DATA  = {}
-# SCRIPT = 'upload_coveralls_csbb='\
-#          'coveralls_hg.coveralls_codeship:main'
-SCRIPT = None
+#
+SCRIPTS = ['bbcs_build_started=bbcs_tools.bitbucket:build_started',
+           'bbcs_build_stopped=bbcs_tools.bitbucket:build_stopped',
+           'bbcs_build_failure=bbcs_tools.bitbucket:build_failure',
+           ]
+#
 KEYWORDS = [
     'Coveralls',
     'Codeship',
-    'BitBucket'
+    'BitBucket',
+    'PyPI',
     ]
 CLASSIFIERS = [
     'Programming Language :: Python :: 3',
@@ -32,6 +36,7 @@ CLASSIFIERS = [
 REQUIREMENTS = [
     'requests',
     'coverage',
+    'coveralls-hg'
     ]
 
 
@@ -43,6 +48,6 @@ KWARGS = {
     'url':URL_MAIN, 'download_url':URL_DOWNLOAD, 'keywords':KEYWORDS,
     'license':LICENSE, 'classifiers':CLASSIFIERS,
     'install_requires':REQUIREMENTS, 'package_data':PACKAGE_DATA,
-    'entry_points':{'console_scripts':[SCRIPT]},}
+    'entry_points':{'console_scripts':SCRIPTS},}
 
 setup(**KWARGS)
