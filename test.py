@@ -2,6 +2,20 @@
 Main Testing file.
 """
 import unittest
+import os
+from bbcs_tools import bitbucket
+
+ENV = {'CI_REPO_NAME':'user/repo',
+       'CI_COMMIT_ID':'cafebabe',
+       'CI_NAME':'codeship',
+       'CI_BUILD_NUMBER':'42',
+       'CI_BUILD_URL':'http://localhost/',
+       'BB_USERNAME':'username',
+       'BB_PASSWORD':'password'}
+
+for _ in ENV.items():
+    os.environ[_[0]] = _[1]
+
 
 class RequestsMock():
     "Requests Mock"
@@ -11,14 +25,14 @@ class RequestsMock():
         self.data_post = None
         self.data = dict()
 
-    def post(self, url, files):
+    def post(self, *args, **kwargs):
         "POST"
-        self.data['POST'] = [url, files]
+        self.data['POST'] = [args, kwargs]
         return self
 
-    def get(self, url):
+    def get(self, *args, **kwargs):
         "GET"
-        self.data['GET'] = url
+        self.data['GET'] = [args, kwargs]
         return self
 
     def raise_for_status(self):
@@ -37,6 +51,7 @@ class Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         super(Test, cls).setUpClass()
+        bitbucket.requests = RequestsMock()
 
     @classmethod
     def tearDownClass(cls):
@@ -45,9 +60,12 @@ class Test(unittest.TestCase):
     def setUp(self):
         pass
 
-    def test_01_smoke(self):
+    def test_01_smoke_bitbucket(self):
         "Just a smoke test."
-        pass
+        bitbucket.build_started()
+        bitbucket.build_stopped()
+        self.assertRaises(SystemExit, bitbucket.build_failure)
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_first']
