@@ -1,0 +1,3 @@
+requests
+coverage<4
+pylint
