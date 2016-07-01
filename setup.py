@@ -7,7 +7,7 @@ from setuptools import setup
 
 NAME = 'BBCS-Tools'
 DESCRIPTION = 'Bitbucket Codeship integration tools.'
-VERSION = '0.0.0.1'
+VERSION = '0.0.0.4'
 LICENSE = 'BSD'
 AUTHOR = 'Martin P. Hellwig'
 AUTHOR_EMAIL = 'martin.hellwig@gmail.com'
@@ -22,6 +22,7 @@ PACKAGE_DATA  = {}
 SCRIPTS = ['bbcs_build_started=bbcs_tools.bitbucket:build_started',
            'bbcs_build_stopped=bbcs_tools.bitbucket:build_stopped',
            'bbcs_build_failure=bbcs_tools.bitbucket:build_failure',
+           'bbcs_deploy_to_pypi=bbcs_tools.pypi:upload',
            ]
 #
 KEYWORDS = [
