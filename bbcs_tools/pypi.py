@@ -117,5 +117,4 @@ def upload():
         _call_setup('register', cwd=cwd)
         _call_setup('sdist', 'upload', cwd=cwd)
         _clean_up_rc(rc_status)
-        return True
 
