@@ -110,16 +110,14 @@ What license is this?
 =====================
 Two-clause BSD
 
+
 How can I get support?
 ======================
-The tools I publish have already taken me considerable effort which I have given
-away free of charge, if you require guaranteed support please contact me via
-e-mail so we can discuss my fee.
+Please use the repo's bug tracker to leave behind any questions, feedback,
+suggestions and comments. I will handle them depending on my time and what looks
+interesting. If you require guaranteed support please contact me via
+e-mail so we can discuss appropriate compensation.
 
-How can I give you support?
-===========================
-Feedback, suggestions and comments via the repo's bug tracker are always
-appreciated. Time permitting I will have a serious look at any pull requests. 
 
 Signing Off
 ===========
@@ -143,5 +141,3 @@ https://www.patreon.com/hellwig
 
 
 Thank you!
-
-   
