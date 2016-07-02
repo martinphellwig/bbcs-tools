@@ -30,20 +30,20 @@ def _build_info(state):
     data = get_build_data(state)
     auth = (os.environ['BB_USERNAME'], os.environ['BB_PASSWORD'])
     post = requests.post(url, json=data, auth=auth)
-    post.raise_for_status()
+    # An unsuccessful status post should not stop a build
+    if post.status_code != 200:
+        print('# Build status notification', post.status_code, post.reason)
     return True
 
 def build_started():
     "Build has started"
     print('# Notify bitbucket that build has started.')
     _build_info(BUILD_STATUS_STARTED)
-    return True
 
 def build_stopped():
     "Build has started"
     print('# Notify bitbucket that build has successfully run.')
     _build_info(BUILD_STATUS_STOPPED)
-    return True
 
 def build_failure():
     "Build has started"
