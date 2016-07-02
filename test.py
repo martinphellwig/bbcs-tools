@@ -126,12 +126,10 @@ class Test(unittest.TestCase):
         pypi._clean_up_rc(rc_status)
         self.assertFalse(os.path.exists(path))
         shutil.rmtree(tempdir)
-    
-    def test_99_always_fail(self):
-        "This will always fail, to test CI failure handling."
-        self.assertTrue(False, 'Testing CI failure handling.')
-        
 
+#     def test_99_always_fail(self):
+#         "This will always fail, to test CI failure handling."
+#         self.assertTrue(False, 'Testing CI failure handling.')
 
 
 
