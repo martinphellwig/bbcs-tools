@@ -93,7 +93,7 @@ And here is what is in mine:
   
 
 Deployment
----------
+----------
 Again choose custom script, I have mine configure to do a build and upload on
 every commit on the default branch. Here is what is in my deploy script:
 
