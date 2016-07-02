@@ -61,6 +61,7 @@ def _call_setup(*args, cwd='', script='setup.py', sys_mod=sys):
     env = os.environ.copy()
     env['PYTHONPATH'] = cwd+':'+  env.get('PYTHONPATH', '')
     args = list(args)
+    script = os.path.abspath(script)
     args.insert(0, script)
     args.insert(0, sys_mod.executable)
     popen = Popen(args, cwd=cwd, env=env,
