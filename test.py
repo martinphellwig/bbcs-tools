@@ -7,16 +7,24 @@ import shutil
 import os
 from bbcs_tools import bitbucket
 from bbcs_tools import pypi
+from coveralls_hg import api as coveralls_api
+from bbcs_tools import coveralls
 
 ENV = {'CI_REPO_NAME':'user/repo',
        'CI_COMMIT_ID':'cafebabe',
+       'CI_COMMITTER_NAME':'name',
+       'CI_COMMITTER_EMAIL':'mail@example.com',
        'CI_NAME':'codeship',
        'CI_BUILD_NUMBER':'42',
        'CI_BUILD_URL':'http://localhost/',
+       'CI_BRANCH':'default',
+       'CI_PULL_REQUEST':'false',
+       'CI_MESSAGE':'message',
        'BB_USERNAME':'username',
        'BB_PASSWORD':'password',
        'PP_USERNAME':'pypi_username',
-       'PP_PASSWORD':'pypi_password'}
+       'PP_PASSWORD':'pypi_password',
+       'COVERALLS_REPO_TOKEN':'cookiemonster'}
 
 for _ in ENV.items():
     os.environ[_[0]] = _[1]
@@ -74,6 +82,7 @@ class Test(unittest.TestCase):
         bitbucket.requests = RequestsMock()
         pypi.requests = RequestsMock()
         pypi.Popen = PopenMock
+        coveralls_api.requests = RequestsMock()
 
     @classmethod
     def tearDownClass(cls):
@@ -94,6 +103,10 @@ class Test(unittest.TestCase):
         "The pypi smoke test"
         pypi.requests.data_json = {'releases':dict()}
         self.assertEqual(None, pypi.upload())
+
+    def test_03_smoke_coveralls(self):
+        "The coveralls smoke test"
+        self.assertEqual(None, coveralls.main())
 
     def test_03_pypy_valid_version(self):
         "Does valid version work?"

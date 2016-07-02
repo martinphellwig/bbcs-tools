@@ -23,6 +23,7 @@ SCRIPTS = ['bbcs_build_started=bbcs_tools.bitbucket:build_started',
            'bbcs_build_stopped=bbcs_tools.bitbucket:build_stopped',
            'bbcs_build_failure=bbcs_tools.bitbucket:build_failure',
            'bbcs_upload_package_to_pypi=bbcs_tools.pypi:upload',
+           'bbcs_upload_coverage_to_coveralls=bbcs_tools.coveralls:main',
            ]
 #
 KEYWORDS = [
