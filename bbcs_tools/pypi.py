@@ -85,8 +85,8 @@ def _create_pypirc(path='~/.pypirc'):
     "username:%s\n"
     "password:%s\n")
     text = template % (PYPI_URL,
-                       os.environ['PYPI_USERNAME'],
-                       os.environ['PYPI_PASSWORD'])
+                       os.environ['PP_USERNAME'],
+                       os.environ['PP_PASSWORD'])
     with open(path, 'w') as file_write:
         file_write.truncate()
         file_write.write(text)
