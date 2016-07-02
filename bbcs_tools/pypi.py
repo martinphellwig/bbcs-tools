@@ -41,7 +41,7 @@ def _get_setup_data():
     patch.patcher()
     loader = importlib.machinery.SourceFileLoader('setup', 'setup.py')
     setup = loader.load_module()
-    patch.kwargs['__file__'] = setup.__file__
+    patch.kwargs['__file__'] = os.path.abspath(setup.__file__)
     patch.restore()
     return patch.kwargs
 
@@ -111,7 +111,6 @@ def upload():
     "Build the package and upload to pypi."
     data = _get_setup_data()
     info = _get_pypi_info(data['name'])
-
     if _valid_version(data, info):
         rc_status = _create_pypirc()
         cwd = os.path.dirname(data['__file__'])
