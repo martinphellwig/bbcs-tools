@@ -32,23 +32,18 @@ def _build_info(state):
     post = requests.post(url, json=data, auth=auth)
     # An unsuccessful status post should not stop a build
     if post.status_code != 200:
-        print('# Build status notification', post.status_code, post.reason)
-    return True
+        print('# Bitbucket POST error:', post.status_code, post.reason)
 
 def build_started():
     "Build has started"
-    print('# Notify bitbucket that build has started.')
     _build_info(BUILD_STATUS_STARTED)
 
 def build_stopped():
     "Build has started"
-    print('# Notify bitbucket that build has successfully run.')
     _build_info(BUILD_STATUS_STOPPED)
 
 def build_failure():
     "Build has started"
-    print('# Notify bitbucket that there was a build failure.')
     _build_info(BUILD_STATUS_FAILURE)
-    print('# Exiting with system exit status 1.')
     raise SystemExit(1)
 

@@ -15,8 +15,8 @@ ENV = {'CI_REPO_NAME':'user/repo',
        'CI_BUILD_URL':'http://localhost/',
        'BB_USERNAME':'username',
        'BB_PASSWORD':'password',
-       'PYPI_USERNAME':'pypi_username',
-       'PYPI_PASSWORD':'pypi_password'}
+       'PP_USERNAME':'pypi_username',
+       'PP_PASSWORD':'pypi_password'}
 
 for _ in ENV.items():
     os.environ[_[0]] = _[1]
