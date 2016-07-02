@@ -93,7 +93,7 @@ class Test(unittest.TestCase):
     def test_02_smoke_pypi(self):
         "The pypi smoke test"
         pypi.requests.data_json = {'releases':dict()}
-        self.assertTrue(pypi.upload())
+        self.assertEqual(None, pypi.upload())
 
     def test_03_pypy_valid_version(self):
         "Does valid version work?"
