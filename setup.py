@@ -7,7 +7,7 @@ from setuptools import setup
 
 NAME = 'BBCS-Tools'
 DESCRIPTION = 'Bitbucket Codeship integration tools.'
-VERSION = '0.0.0.10'
+VERSION = '0.0.0.11'
 LICENSE = 'BSD'
 AUTHOR = 'Martin P. Hellwig'
 AUTHOR_EMAIL = 'martin.hellwig@gmail.com'
