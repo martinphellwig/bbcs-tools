@@ -5,6 +5,7 @@ import sys
 from subprocess import Popen
 import distutils.core # pylint: disable=no-name-in-module, import-error
 import os
+import importlib.machinery
 import requests
 
 PYPI_URL = os.environ.get('PYPI_URL', 'https://pypi.python.org/pypi/')
@@ -38,7 +39,8 @@ def _get_setup_data():
     "Import setup and extract relevant data."
     patch = PatchSetup()
     patch.patcher()
-    import setup
+    loader = importlib.machinery.SourceFileLoader('setup', 'setup.py')
+    setup = loader.load_module()
     patch.kwargs['__file__'] = setup.__file__
     patch.restore()
     return patch.kwargs
