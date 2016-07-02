@@ -64,7 +64,7 @@ def _call_setup(*args, cwd='', script='setup.py', sys_mod=sys):
     script = os.path.abspath(script)
     args.insert(0, script)
     args.insert(0, sys_mod.executable)
-    popen = Popen(args, cwd=cwd, env=env,
+    popen = Popen(args, cwd=cwd,  shell=True, env=env,
                   stderr=sys_mod.stderr, stdout=sys_mod.stdout)
     popen.wait()
 
