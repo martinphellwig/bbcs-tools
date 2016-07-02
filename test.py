@@ -39,6 +39,7 @@ class RequestsMock():
         self.data_json = None
         self.data_post = None
         self.data = dict()
+        self.reason = 'No reason'
 
     def post(self, *args, **kwargs):
         "POST"
@@ -84,7 +85,9 @@ class Test(unittest.TestCase):
     def test_01_smoke_bitbucket(self):
         "Just a smoke test."
         bitbucket.build_started()
+        bitbucket.requests.status_code=404
         bitbucket.build_stopped()
+        bitbucket.requests.status_code=200
         self.assertRaises(SystemExit, bitbucket.build_failure)
 
     def test_02_smoke_pypi(self):
