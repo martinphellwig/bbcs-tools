@@ -7,8 +7,10 @@ import os
 from coveralls_hg.api import API
 
 # pylint:disable=dangerous-default-value
-def main(env=os.environ, coverage_file='.coverage'):
+def main(env=None, coverage_file='.coverage'):
     "main script"
+    if env is None:
+        env = os.environ
     user, repo = env['CI_REPO_NAME'].split('/')
     api = API(user,repo, token=env['COVERALLS_REPO_TOKEN'])
 
